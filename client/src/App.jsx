@@ -1,20 +1,24 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Navbar from './Components/Navbar'
-import Footer from './Components/Footer'
-import Home from './Pages/Home'
-import Movies from './Pages/Movies'
-import MovieDetails from './Pages/Moviedetails'
-import SeatLayout from './Pages/SeatLayout'
-import MyBookings from './Pages/MyBookings'
-import Favourite from './Pages/Favourite'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import Navbar from './src/components/Navbar'
+import Footer from './src/components/Footer'
+import Home from './pages/Home'
+import Movies from './pages/Movies'
+import MovieDetails from './pages/Moviedetails'
+import SeatLayout from './pages/SeatLayout'
+import MyBookings from './pages/MyBookings'
+import Favourite from './pages/Favourite'
+import { Toaster } from 'react-hot-toast'
 
 
-const App = () => {const isAdminRoute = useLocation().pathname.startswith('/admin');
+const App = () => {
 
+  const isAdminRoute = useLocation().pathname.startsWith('/admin')
   return(
     <>
-    <Navbar />
+  
+      <Toaster />
+      {!isAdminRoute && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
@@ -23,7 +27,8 @@ const App = () => {const isAdminRoute = useLocation().pathname.startswith('/admi
         <Route path ="/my-bookings" element={<MyBookings />} />
         <Route path="/favourite" element={<Favourite />} />
       </Routes>
-    </> 
+      {!isAdminRoute && <Footer />}
+    </>
   )
 }
 export default App
