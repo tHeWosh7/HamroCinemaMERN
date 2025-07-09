@@ -3,13 +3,17 @@ import marvellogo from './Marvelstds.png'
 import bg_img from './BG_img.png'
 import logo2 from './Frame 1.svg'
 import MainLogo from './MainLogo.png'
+import googleplayic from './googlePlay.svg'
+import appstoreic from './appStore.svg' 
 
 export const assets = {
     logo,
     marvellogo,
     bg_img,
     MainLogo,
-    logo2
+    logo2,
+    googleplayic,
+    appstoreic,
 }
 
 
@@ -56,81 +60,80 @@ export const dummyShowsData = [
     {
         "_id": "324544",
         "id": 324544,
-        "title": "In the Lost Lands",
+        "title": "Mission: Impossible - The Final Reckoning",
         "overview": "A queen sends the powerful and feared sorceress Gray Alys to the ghostly wilderness of the Lost Lands in search of a magical power, where she and her guide, the drifter Boyce, must outwit and outfight both man and demon.",
-        "poster_path": "https://image.tmdb.org/t/p/original/dDlfjR7gllmr8HTeN6rfrYhTdwX.jpg",
-        "backdrop_path": "https://image.tmdb.org/t/p/original/op3qmNhvwEvyT7UFyPbIfQmKriB.jpg",
+        "poster_path": "https://image.tmdb.org/t/p/original/z53D72EAOxGRqdr7KXXWp9dJiDe.jpg",
+        "backdrop_path": "https://image.tmdb.org/t/p/original/zjRGMFGm7yP4vLnTGRjrmO28hW4.jpg",
         "genres": [
             { "id": 28, "name": "Action" },
-            { "id": 14, "name": "Fantasy" },
-            { "id": 12, "name": "Adventure" }
+            { "id": 14, "name": "Adventure" },
+            { "id": 12, "name": "Thriller" }
         ],
         "casts": dummyCastsData,
-        "release_date": "2025-02-27",
+        "release_date": "2025-05-23",
         "original_language": "en",
-        "tagline": "She seeks the power to free her people.",
-        "vote_average": 6.4,
-        "vote_count": 15000,
-        "runtime": 102,
+        "tagline": "Every choice, every mission, has all led to this.",
+        "vote_average": 7.4,
+        "vote_count": 107000,
+        "runtime": 169,
     },
     {
         "_id": "1232546",
         "id": 1232546,
-        "title": "Until Dawn",
-        "overview": "One year after her sister Melanie mysteriously disappeared, Clover and her friends head into the remote valley where she vanished in search of answers. Exploring an abandoned visitor center, they find themselves stalked by a masked killer and horrifically murdered one by one...only to wake up and find themselves back at the beginning of the same evening.",
-        "poster_path": "https://image.tmdb.org/t/p/original/juA4IWO52Fecx8lhAsxmDgy3M3.jpg",
-        "backdrop_path": "https://image.tmdb.org/t/p/original/icFWIk1KfkWLZnugZAJEDauNZ94.jpg",
+        "title": "Sarangi : A Journey of Purna Bahadur",
+        "overview": "In the heart of a remote village, Purna Bahadur Ko Sarangi weaves a poignant drama about the unbreakable bond between a struggling father and his son. Purna Bahadur, a humble and impoverished musician, clings to the hope of a better life through his beloved sarangi, an instrument that carries the echoes of his dreams and sacrifices. As the family faces relentless hardship, the son, who yearns for a brighter future, becomes increasingly distant, torn between his aspirations and the harsh reality of their life.",
+        "poster_path": "https://image.tmdb.org/t/p/original/pKWv0d6crSgjMNiDFzn5Jxq0kF.jpg",
+        "backdrop_path": "https://image.tmdb.org/t/p/original/sRttdKiL7sqoJp7pRcButVzNByG.jpg",
         "genres": [
-            { "id": 27, "name": "Horror" },
-            { "id": 9648, "name": "Mystery" }
+            { "id": 27, "name": "Drama" },
+            { "id": 9648, "name": "Family" }
         ],
         "casts": dummyCastsData,
-        "release_date": "2025-04-23",
+        "release_date": "2024-10-31",
         "original_language": "en",
-        "tagline": "Every night a different nightmare.",
-        "vote_average": 6.405,
-        "vote_count": 18000,
-        "runtime": 103,
+        "tagline": "Sarangi: A Journey of Purna Bahadur, a story of love, sacrifice, and the enduring power of music amidst hardship",
+        "vote_average": 8.4,
+        "vote_count": 1300,
+        "runtime": 145,
     },
     {
         "_id": "552524",
         "id": 552524,
-        "title": "Lilo & Stitch",
-        "overview": "The wildly funny and touching story of a lonely Hawaiian girl and the fugitive alien who helps to mend her broken family.",
-        "poster_path": "https://image.tmdb.org/t/p/original/mKKqV23MQ0uakJS8OCE2TfV5jNS.jpg",
-        "backdrop_path": "https://image.tmdb.org/t/p/original/7Zx3wDG5bBtcfk8lcnCWDOLM4Y4.jpg",
+        "title": "Sitaare Zameen Par",
+        "overview": "A disgraced basketball coach is given the chance to coach a team of players who are intellectually disabled as part of community services. Gulshan has apprehensions at first and feels out of place but soon realizes they just might have what it takes to make it to the national championships.",
+        "poster_path": "https://image.tmdb.org/t/p/original/2ztRFbp1YSvMSIrr7AqYq6i6pqC.jpg",
+        "backdrop_path": "https://image.tmdb.org/t/p/original/pdbML7ol4HvsI1xWX0s9LZpUGfL.jpg",
         "genres": [
-            { "id": 10751, "name": "Family" },
-            { "id": 35, "name": "Comedy" },
-            { "id": 878, "name": "Science Fiction" }
+            { "id": 10751, "name": "Comedy" },
+            { "id": 35, "name": "Drama" },
         ],
         "casts": dummyCastsData,
-        "release_date": "2025-05-17",
+        "release_date": "2025-06-20",
         "original_language": "en",
-        "tagline": "Hold on to your coconuts.",
-        "vote_average": 7.117,
-        "vote_count": 27500,
-        "runtime": 108,
+        "tagline": "Sabka Apna Apna Normal",
+        "vote_average": 7.3,
+        "vote_count": 23469,
+        "runtime": 155,
     },
     {
         "_id": "668489",
         "id": 668489,
-        "title": "Havoc",
+        "title": "Anjila",
         "overview": "When a drug heist swerves lethally out of control, a jaded cop fights his way through a corrupt city's criminal underworld to save a politician's son.",
-        "poster_path": "https://image.tmdb.org/t/p/original/ubP2OsF3GlfqYPvXyLw9d78djGX.jpg",
-        "backdrop_path": "https://image.tmdb.org/t/p/original/65MVgDa6YjSdqzh7YOA04mYkioo.jpg",
+        "poster_path": "https://bishwojyoti.com/Modules/CineUploadFiles/Movie/image/30x40-print%20(2)%20(1)_763411.jpg",
+        "backdrop_path": "https://elitecinemanepal.com/Modules/CineUploadFiles/Movie/image/Anjila%20310x390_879487_964207.jpg",
         "genres": [
             { "id": 28, "name": "Action" },
             { "id": 80, "name": "Crime" },
             { "id": 53, "name": "Thriller" }
         ],
         "casts": dummyCastsData,
-        "release_date": "2025-04-25",
+        "release_date": "2025-03-27",
         "original_language": "en",
         "tagline": "No law. Only disorder.",
-        "vote_average": 6.537,
-        "vote_count": 35960,
-        "runtime": 107,
+        "vote_average": 5.5,
+        "vote_count": 35,
+        "runtime": 146,
     },
     {
         "_id": "950387",
