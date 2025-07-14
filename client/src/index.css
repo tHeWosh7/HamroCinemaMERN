@@ -5,6 +5,8 @@
   --color-primary: #FF0004;
   --color-primary-dull: #D63854;
   --color-navbarbgg: #00D0FF;
+  --color-IMDB: #F5C518
+  --color-DarkRed: #310606
 }
 
 *{
@@ -18,4 +20,6 @@ body {
   background-color: #000000;
 }
 
- 
+.no-scrollbar{
+  scrollbar-width:none;
+}

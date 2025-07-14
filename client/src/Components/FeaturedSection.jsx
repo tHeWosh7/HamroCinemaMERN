@@ -14,8 +14,8 @@ const FeaturedSection = () => {
             <BackGradientRed top='-150vh' right='50vh'/>
             <BackGradientBlue top='30vh' left='50vh'/>
         <p className='text-2xl font-bold mx-8 my-8'>Now Showing</p>
-        <button onClick={() => navigate('/movies')} className='group flex flex-row items-center gap-2 text-gray-400 text-sm m-10 cursor-pointer'>
-            View All<ArrowRight className='group-hover:translate-x-0.5 translation w-4.5 h-4.5'/>
+        <button onClick={() => navigate('/movies')} className='group flex flex-row items-center gap-2 text-gray-400 
+        text-sm m-10 cursor-pointer'>View All<ArrowRight className='group-hover:translate-x-0.5 translation w-4.5 h-4.5'/>
         </button>
         </div>
         <div className='flex min-max:flex-wrap max-sm:justify-center gap-6 mt-8'>
@@ -25,7 +25,8 @@ const FeaturedSection = () => {
         </div>
         <div className='flex justify-center mt-20 '>
             <button onClick={()=>{navigate('/movies'), scrollTo(0,0)}} 
-                className='flex  w-30 h-10 justify-center items-center bg-red-500 rounded-[3px] mb-20' >Show More</button>
+                className='flex  w-30 h-10 justify-center text-gray-100 items-center bg-red-500 rounded-[3px] mb-20 
+                hover:bg-gray-100 hover:text-red-500' >Show More</button>
         </div>
 
     </div>
