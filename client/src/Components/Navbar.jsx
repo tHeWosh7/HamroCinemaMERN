@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className='fixed  w-full lg:w-[190vh] top-0 left-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-36 py-2 -mx-5 md:-mx-20 md:-my-0 lg:backdrop-blur-[5px] lg:border-white/10 lg:border-[2px] gap-2 '>
         <div>
             <Link to='/' className='max-md:flex-1'>
-            <img src={assets.MainLogo} alt='logo' className='w-70 h-auto' />
+            <img  onClick={()=>{navigate('/');scrollTo(0,0)}} src={assets.MainLogo} alt='logo' className='w-70 h-auto cursor-pointer' />
             </Link>
         </div>
         <div/>

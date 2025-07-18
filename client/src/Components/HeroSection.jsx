@@ -25,7 +25,7 @@ const HeroSection = () => {
         </div>
         <p className='max-w-md text-white'>The Avengers and their allies must be willing to sacrifice all in an attempt to defeat 
             the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.</p>
-        <button onClick={()=> navigate('/movies')} className='flex items-center gap-1 px-6 py-3 font-bolder bg-primary 
+        <button onClick={()=> {navigate('/movies'); scrollTo(0,0)}} className='flex items-center gap-1 px-6 py-3 bg-primary 
         hover:bg-white hover:text-red-500 hover:font-bold transition text-white rounded-full font-medium cursor-pointer'>
             Explore More
             <ArrowRight className='w-5 h-5' />

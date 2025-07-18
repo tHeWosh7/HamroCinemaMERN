@@ -5,6 +5,7 @@ import logo2 from './Frame 1.svg'
 import MainLogo from './MainLogo.png'
 import googleplayic from './googlePlay.svg'
 import appstoreic from './appStore.svg' 
+import screen from './screenimg.png'
 
 export const assets = {
     logo,
@@ -14,6 +15,7 @@ export const assets = {
     logo2,
     googleplayic,
     appstoreic,
+    screen,
 }
 
 
@@ -306,7 +308,7 @@ export const dummyBookingData = [
         "show": {
             _id: "68352363e96d99513e4221a4",
             movie: dummyShowsData[0],
-            showDateTime: "2025-06-30T02:30:00.000Z",
+            showDateTime: "2025-07-01T18:00:00.000Z",
             showPrice: 59,
         },
         "amount": 98,
@@ -318,8 +320,8 @@ export const dummyBookingData = [
         "user": { "name": "Diwash", },
         "show": {
             _id: "68352363e96d99513e4221a4",
-            movie: dummyShowsData[0],
-            showDateTime: "2025-06-30T02:30:00.000Z",
+            movie: dummyShowsData[1],
+            showDateTime: "2025-07-10T05:30:00.000Z",
             showPrice: 59,
         },
         "amount": 49,
@@ -331,8 +333,8 @@ export const dummyBookingData = [
         "user": { "name": "Diwash", },
         "show": {
             _id: "68352363e96d99513e4221a4",
-            movie: dummyShowsData[0],
-            showDateTime: "2025-06-30T02:30:00.000Z",
+            movie: dummyShowsData[3],
+            showDateTime: "2025-07-18T02:30:00.000Z",
             showPrice: 59,
         },
         "amount": 147,
