@@ -6,6 +6,7 @@ import MainLogo from './MainLogo.png'
 import googleplayic from './googlePlay.svg'
 import appstoreic from './appStore.svg' 
 import screen from './screenimg.png'
+import profile from './profile.png'
 
 export const assets = {
     logo,
@@ -16,6 +17,7 @@ export const assets = {
     googleplayic,
     appstoreic,
     screen,
+    profile
 }
 
 
