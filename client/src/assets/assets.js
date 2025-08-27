@@ -6,6 +6,7 @@ import MainLogo from './MainLogo.png'
 import googleplayic from './googlePlay.svg'
 import appstoreic from './appStore.svg' 
 import screen from './screenimg.png'
+import profile from './profile.png'
 
 export const assets = {
     logo,
@@ -16,6 +17,7 @@ export const assets = {
     googleplayic,
     appstoreic,
     screen,
+    profile
 }
 
 
@@ -304,7 +306,7 @@ export const dummyDashboardData = {
 export const dummyBookingData = [
     {
         "_id": "68396334fb83252d82e17295",
-        "user": { "name": "Diwash", },
+        "user": { "name": "Shusovit", },
         "show": {
             _id: "68352363e96d99513e4221a4",
             movie: dummyShowsData[0],
@@ -330,7 +332,7 @@ export const dummyBookingData = [
     },
     {
         "_id": "68396334fb83252d82e17295",
-        "user": { "name": "Diwash", },
+        "user": { "name": "Sandip", },
         "show": {
             _id: "68352363e96d99513e4221a4",
             movie: dummyShowsData[3],
