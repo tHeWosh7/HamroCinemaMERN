@@ -13,6 +13,7 @@ export const AppProvider = ({children})=>{
     const [isAdmin, setIsAdmin] = useState(false)
     const [shows, setShows] = useState([])
     const [favouriteMovies, setFavouriteMovies] = useState([])
+    const [searchTerm, setSearchTerm] = useState('');
 
     const image_base_url = import.meta.env.VITE_TMDB_IMAGE_BASE_URL;
 
@@ -94,7 +95,8 @@ export const AppProvider = ({children})=>{
 
     const value = {
         axios,
-        user, getToken, navigate, isAdmin, shows, favouriteMovies, fetchFavouriteMovies, fetchIsAdmin, image_base_url
+        user, getToken, navigate, isAdmin, shows, favouriteMovies, fetchFavouriteMovies, fetchIsAdmin, image_base_url,
+        searchTerm, setSearchTerm
         }
     return(
         <AppContext.Provider value={value}>
