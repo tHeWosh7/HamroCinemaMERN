@@ -117,7 +117,7 @@ const SeatLayout = () => {
 
   useEffect(()=>{
     getShow()
-  },[id])
+  },[])
 
   useEffect(()=>{
     if(selectedTime){
