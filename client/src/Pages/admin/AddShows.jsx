@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { StarIcon, CheckIcon, DeleteIcon } from "lucide-react";
 import { kconverter } from "../../lib/kConverter";
-import Loading from "../../Components/Loading";
+import Loading from "../../components/Loading";
 import { dummyShowsData } from "../../assets/assets";
 import Title from "../../Components/admin/Title";
+import { useAppContext } from "../../context/AppContext";
 
 
 const AddShows = () => {
+  const{axios, getToken, user, image_base_url} = useAppContext()
   const currency = import.meta.env.VITE_CURRENCY;
 
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
@@ -15,9 +17,16 @@ const AddShows = () => {
   const [dateTimeInput, setDateTimeInput] = useState("");
   const [showPrice, setShowPrice] = useState("");
 
-  // Fetch movies (dummy for now)
+  // Fetch movies
   const fetchNowPlayingMovies = async () => {
-    setNowPlayingMovies(dummyShowsData)
+    try{
+      const {data} = await axios.get('/api/show/now_playing',{headers: {Authorization: `Bearer ${await getToken()}`}})
+      if(data.success){
+        setNowPlayingMovies(data.movies)
+      }
+    } catch(error){
+      console.error('Error Fetching movies:', error);
+    }
   };
 
   // Add datetime to selection
@@ -53,8 +62,10 @@ const AddShows = () => {
   };
 
   useEffect(() => {
-    fetchNowPlayingMovies();
-  }, []);
+    if(user){
+      fetchNowPlayingMovies();
+    }
+  }, [user]);
 
   return nowPlayingMovies.length > 0 ? (
     <>
@@ -75,7 +86,7 @@ const AddShows = () => {
             >
               <div className="relative rounded-lg overflow-hidden">
                 <img
-                  src={movie.poster_path}
+                  src={image_base_url + movie.poster_path}
                   alt={movie.title}
                   className="w-full object-cover brightness-90"
                 />

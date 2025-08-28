@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { dummyShowsData } from '../../assets/assets';
-import Loading from '../../Components/Loading';
+import Loading from '../../components/Loading';
 import { DateFormat } from '../../lib/dateformat';
 import Title from '../../Components/admin/Title';
 

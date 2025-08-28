@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Title from "../../Components/admin/Title";
 import { DateFormat } from "../../lib/dateformat";
 import { dummyBookingData } from "../../assets/assets";
-import Loading from "../../Components/Loading";
+import Loading from "../../components/Loading";
 
 
 const ListBookings = () => {

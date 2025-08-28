@@ -1,9 +1,9 @@
 import { ChartLineIcon, CircleDollarSignIcon, PlayCircleIcon, StarIcon, UsersIcon } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { dummyDashboardData } from '../../assets/assets';
-import Loading from '../../Components/Loading';
+import Loading from '../../components/Loading';
 import Title from '../../Components/admin/Title';
-import BackGradientRed from '../../Components/BackGradientRed';
+import BackGradientRed from '../../components/BackGradientRed';
 import { DateFormat } from '../../lib/dateformat';
 
 const Dashboard = () => {
