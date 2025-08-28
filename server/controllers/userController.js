@@ -45,14 +45,30 @@ export const updateFavourite = async (req, res)=>{
     }
 }
 
+// export const getFavourites = async (req, res)=>{
+//     try{
+//         const user = await clerkClient.users.getUser(req.auth().userId)
+        
+//         const favourites = user.privateMetadata.favourites;
+
+//         //getting movies form database
+//         const movies = await Movie.find({_id: {$in: favourites}})
+
+//         res.json({success: true, movies})
+//     } catch (error){
+//         console.error(error);
+//         res.json({success: false, message: error.message});
+//     }
+// }
 export const getFavourites = async (req, res)=>{
     try{
-        const user = await clerkClient.users.getUser(req.auth().userId)
-        const favourites = user.privateMetadata.favourites;
-
-        //getting movies form database
+        const auth = req.auth();
+        if (!auth || !auth.userId) {
+            return res.status(401).json({success: false, message: "Unauthorized"});
+        }
+        const user = await clerkClient.users.getUser(auth.userId)
+        const favourites = user.privateMetadata.favourites || [];
         const movies = await Movie.find({_id: {$in: favourites}})
-
         res.json({success: true, movies})
     } catch (error){
         console.error(error);

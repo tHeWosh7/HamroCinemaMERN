@@ -19,6 +19,25 @@ export const AppProvider = ({children})=>{
     const {getToken} = useAuth()
     const location = useLocation()
     const navigate = useNavigate()
+    // const [adminChecked, setAdminChecked] = useState(false);
+
+// const fetchIsAdmin = async()=>{
+//     try{
+//         const {data} = await axios.get('/api/admin/is-admin',{headers:{Authorization: `Bearer ${await getToken()}`}})
+//         setIsAdmin(data.isAdmin)
+//         setAdminChecked(true)
+//         if (!data.isAdmin && location.pathname.startsWith('/admin')){
+//             navigate('/')
+//             toast.error('You are not authorized to access admin panel')
+//         }
+//     } catch (error){
+//         console.error(error)
+//         setAdminChecked(true)
+//     }
+// }
+
+
+
 
     const fetchIsAdmin = async()=>{
         try{
@@ -73,7 +92,6 @@ export const AppProvider = ({children})=>{
 
     const value = {
         axios,
-        fetchIsAdmin,
         user, getToken, navigate, isAdmin, shows, favouriteMovies, fetchFavouriteMovies
         }
     return(

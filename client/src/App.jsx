@@ -34,11 +34,7 @@ const App = () => {
         <Route path ="/movies/:id/:date" element={<SeatLayout />} />
         <Route path ="/my-bookings" element={<MyBookings />} />
         <Route path="/favourite" element={<Favourite />} />
-         <Route path="/admin/*" element={user ? <Layout /> : (
-          <div className='min-h-screen flex items-center justify-center'>
-            <SignIn fallbackRedirectUrl={'/admin'}/>
-          </div>
-         )}>
+         <Route path="/admin/*" element={<Layout/>}>
           <Route index element={<Dashboard />} />
           <Route path="add-shows" element={<AddShows />} />
           <Route path="list-shows" element={<ListShows />} />
