@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { MenuIcon, SearchIcon, TicketPlus, XIcon } from 'lucide-react'
 import React, { useState } from 'react'
 import { useClerk, UserButton, useUser, } from '@clerk/clerk-react'
+import { useAppContext } from '../context/AppContext'
 
 
 const Navbar = () => {
@@ -10,6 +11,8 @@ const Navbar = () => {
     const {user} = useUser()
     const {openSignIn} = useClerk()
     const navigate = useNavigate()
+
+    const {favouriteMovies} = useAppContext();
 
     return (
       <div className='fixed  w-full lg:w-[190vh] top-0 left-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-36 py-2 -mx-5 md:-mx-20 md:-my-0 lg:backdrop-blur-[5px] lg:border-white/10 lg:border-[2px] gap-2 '>
@@ -30,7 +33,7 @@ const Navbar = () => {
             <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/movies'>Movies</Link>
             <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Theater</Link>
             <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Releases</Link>
-            <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/favourite'>Favourite</Link>
+            {favouriteMovies.length>0 && <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/favourite'>Favourite</Link>}
         </div>
         <div className='flex items-center gap-8'>
             <SearchIcon className='hidden lg:block w-8 h-8 cursor-pointer hover:text-red-500 md:text-white' />

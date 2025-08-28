@@ -8,6 +8,8 @@ import timeFormat from '../lib/timeformat'
 import DateSelect from '../components/DateSelect'
 import MovieCard from '../components/MovieCard'
 import Loading from '../components/Loading'
+import { useAppContext } from '../context/AppContext'
+import toast from 'react-hot-toast'
 
 const MovieDetails = () => {
   const { id } = useParams()
@@ -15,36 +17,66 @@ const MovieDetails = () => {
   const [loading, setLoading] = useState(true)
   const [show, setShow] = useState(null)
 
-  useEffect(() => {
-    setLoading(true)
-    const timer = setTimeout(() => {
-      const matchedShow = dummyShowsData.find(show => show._id === id)
-      if (matchedShow) {
-        setShow({ movie: matchedShow, dateTime: dummyDateTimeData })
-      } else {
-        setShow('not-found')
+  const {shows, axios, getToken, user, fetchFavouriteMovies, favouriteMovies, image_base_url} = useAppContext();
+
+  const getShow = async()=>{
+    try{
+      const {data} = await axios.get(`/api/show/${id}`)
+      if (data.success){
+        setShow(data)
       }
-       setLoading(false)
-      setTimeout(() => setFadeIn(true), 50) // small delay to trigger transition
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [id])
-
-  if (loading) return <Loading />
-  if (show === 'not-found') {
-    return (
-      <div className='flex items-center justify-center h-screen text-2xl text-red-500'>
-        Movie Not Found
-      </div>
-    )
+    } catch(error){
+      console.log(error);
+    }
   }
 
-  return (
+  const handleFavourite = async()=>{
+    try{
+      if(!user) return toast.error('Please sign in to add to favourites');
+      const {data} = await axios.post('/api/user/update-favourite',{movieId:id},{headers:{Authorization: `Bearer ${await getToken()}`}})
+      if(data.success){
+        await fetchFavouriteMovies();
+        toast.success(data.message);
+      }
+    } catch(error){
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    getShow();
+  },[id])
+
+  // useEffect(() => {
+  //   setLoading(true)
+  //   const timer = setTimeout(() => {
+  //     const matchedShow = show.find(show => show._id === id)
+  //     if (matchedShow) {
+  //       setShow({ movie: matchedShow, dateTime: show.dateTime })
+  //     } else {
+  //       setShow('not-found')
+  //     }
+  //      setLoading(false)
+  //     setTimeout(() => setFadeIn(true), 50) // small delay to trigger transition
+  //   }, 500)
+
+  //   return () => clearTimeout(timer)
+  // }, [id])
+
+  // if (loading) return <Loading />
+  // if (show === 'not-found') {
+  //   return (
+  //     <div className='flex items-center justify-center h-screen text-2xl text-red-500'>
+  //       Movie Not Found
+  //     </div>
+  //   )
+  // }
+
+  return show?(
     <div className='px-6 md:px-16 lg:px-40 pt-30 md:pt-50 overflow-hidden'>
       <div className='flex flex-col md:flex-row gap-8 max-w-6xl mx-auto'>
         <img
-          src={show.movie.poster_path}
+          src={image_base_url + show.movie.poster_path}
           alt={`${show.movie.title} Poster`}
           className='max-md:mx-auto rounded-xl h-104 max-w-70 object-cover'
         />
@@ -72,8 +104,9 @@ const MovieDetails = () => {
             <a href="#dateSelect" className='px-10 py-3 text-sm bg-red-500 hover:bg-white hover:text-red-500 transition rounded-md font-medium cursor-pointer active:scale-95'>
               Buy Tickets
             </a>
+             {/* onClick={handleFavourite}  */}
             <button className='bg-gray-800/70 p-2.5 rounded-full transition cursor-pointer active:scale-95'>
-              <Heart className='w-5 h-5 hover:scale-110' />
+              <Heart className={`w-5 h-5 ${favouriteMovies.find(movie=>movie._id===id) ? 'fill-primary text-primary':""}`} />
             </button>
           </div>
         </div>
@@ -84,7 +117,7 @@ const MovieDetails = () => {
         <div className='flex items-center gap-5 w-max px-4'>
           {show.movie.casts?.slice(0, 12).map((cast, index) => (
             <div key={index} className='flex flex-col items-center text-center'>
-              <img src={cast.profile_path} alt={cast.name} className='rounded-full h-20 md:h-20 aspect-square object-cover' />
+              <img src={image_base_url + cast.profile_path} alt={cast.name} className='rounded-full h-20 md:h-20 aspect-square object-cover' />
               <p className='font-medium text-xs mt-3'>{cast.name}</p>
             </div>
           ))}
@@ -95,7 +128,7 @@ const MovieDetails = () => {
 
       <p className='text-lg font-medium mt-20 mb-8'>You May Also Like</p>
       <div className='flex flex-wrap max-sm:justify-center gap-6'>
-        {dummyShowsData.slice(0, 4).map((movie, index) => (
+        {shows.slice(0, 4).map((movie, index) => (
           <MovieCard key={index} movie={movie} />
         ))}
       </div>
@@ -111,7 +144,7 @@ const MovieDetails = () => {
         </button>
       </div>
     </div>
-  )
-}
+  ) : <Loading />
+} 
 
 export default MovieDetails

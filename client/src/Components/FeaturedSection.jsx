@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import BackGradientRed from './BackGradientRed'
 import BackGradientBlue from './BackGradientBlue'
 import MovieCard from './MovieCard'
-import { dummyShowsData } from '../assets/assets'
+// import { dummyShowsData } from '../assets/assets'
+import { useAppContext } from '../context/AppContext'
 
 const FeaturedSection = () => {
  const navigate = useNavigate();
+ const {shows} = useAppContext();
   return (
     <div className='px-6 md:px-16 lg:px-24 xl:px-44 overflow-hidden'>
         <div className='relative flex items-center justify-between pt-0 pb-10 '>
@@ -19,7 +21,7 @@ const FeaturedSection = () => {
         </button>
         </div>
         <div className='flex min-max:flex-wrap max-sm:justify-center gap-6 mt-8'>
-            {dummyShowsData.slice(0, 4).map((show)=>(
+            {shows.slice(0, 4).map((show)=>(
                 <MovieCard key={show.id} movie={show}/>
             ))}
         </div>
