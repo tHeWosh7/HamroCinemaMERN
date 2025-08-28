@@ -7,6 +7,7 @@ import isotimeformat from '../lib/isotimeformat'
 import BackGradientBlue from '../components/BackGradientBlue'
 import BackGradientRed from '../components/BackGradientRed'
 import toast from 'react-hot-toast'
+import { useAppContext } from '../context/AppContext'
 
 const SeatLayout = () => {
 
@@ -16,15 +17,34 @@ const SeatLayout = () => {
   const [selectedSeats, setSelectedSeats] = useState([])
   const [selectedTime, setSelectedTime] = useState(null)
   const [show, setShow] = useState(null)
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = useState(true)
+  const [occupiedSeats, setOccupiedSeats] = useState([])
 
   const navigate = useNavigate()
+
+  const {axios, getToken, user} = useAppContext();
+
+  const getShow = async()=>{
+    try{
+      const {data} = await axios.get(`/api/show/${id}`)
+      if (data.success){
+        setShow(data)
+      }
+    } catch (error){
+      console.log(error)
+    }
+  }
+
+
   const handleSeatClick = (seatId) => {
     if(!selectedTime){
       return toast("Please select time")
     }
     if(!selectedSeats.includes(seatId) && selectedSeats.length > 4){
       return toast ("You can only select 5 seats")
+    }
+    if(occupiedSeats.includes(seatId)){
+      return toast("Seat is already occupied")
     }
     setSelectedSeats(prev => 
       prev.includes(seatId) 
@@ -38,7 +58,9 @@ const SeatLayout = () => {
           const seatId = `${row}${i+1}`;
           return (
             <button key={seatId} onClick={()=> handleSeatClick (seatId)} className={`h-8 w-8 rounded
-            border border-white/40 cursor-pointer ${selectedSeats.includes(seatId) && "bg-white/85 text-[#3B0000]"}`}>
+            border border-white/40 cursor-pointer 
+            ${selectedSeats.includes(seatId) && "bg-white/85 text-[#3B0000]"}
+            ${occupiedSeats.includes(seatId) && "opacity-50"}`}>
               {seatId}
             </button>
           );
@@ -48,35 +70,90 @@ const SeatLayout = () => {
     </div>
   )
 
-  useEffect(() => {
-    setLoading(true)
-    const timer = setTimeout(() => {
-      const matchedShow = dummyShowsData.find(show => show._id === id)
-      if (matchedShow && dummyDateTimeData[date]) {
-        setShow({
-          movie: matchedShow,
-          dateTime: dummyDateTimeData
-        })
-      } else {
-        setShow('not-found')
-      }
-      setLoading(false)
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [id, date])
-
-  if (loading) return <Loading />
-
-  if (show === 'not-found') {
-    return (
-      <div className='flex items-center justify-center h-screen text-2xl text-gray-500'>
-        Show Not Found
-      </div>
-    )
+  // const getOccupiedSeats = async()=>{
+  //   try{
+  //     const {data} = await axios.get(`/api/booking/seats/${selectedTime.showId}`)
+  //     if (data.success){
+  //       setOccupiedSeats(data.occupiedSeats)
+  //     } else{
+  //       toast.error(data.message)
+  //     }
+  //   } catch (error){
+  //     console.log(error)
+  //   }
+  // }
+  const getOccupiedSeats = async()=>{
+  if (!selectedTime || !selectedTime.showId) return; // Prevent API call if showId is missing
+  try{
+    const {data} = await axios.get(`/api/booking/seats/${selectedTime.showId}`)
+    if (data.success){
+      setOccupiedSeats(data.occupiedSeats)
+    } else{
+      toast.error(data.message)
+    }
+  } catch (error){
+    console.log(error)
   }
+}
 
-  return (
+  const bookTickets = async()=>{
+    try{
+      if(!user) return toast.error('Please Login to proceed')
+        if(!selectedTime || !selectedSeats.length) return toast.error('Please select time and seats');
+      const {data} = await axios.post('/api/booking/create',{showId: selectedTime.showId, selectedSeats}
+         ,{headers:{Authorization: `Bearer ${await getToken()}`}});
+    
+      if(data.success){
+        toast.success(data.message)
+        navigate('/my-bookings')
+      } else{
+        toast.error(data.message)
+      }
+    } catch (error){
+      toast.error(error.message)
+    }
+  }
+  
+
+  useEffect(()=>{
+    getShow()
+  },[id])
+
+  useEffect(()=>{
+    if(selectedTime){
+      getOccupiedSeats()
+    }
+  },[selectedTime])
+
+  // useEffect(() => {
+  //   setLoading(true)
+  //   const timer = setTimeout(() => {
+  //     const matchedShow = dummyShowsData.find(show => show._id === id)
+  //     if (matchedShow && dummyDateTimeData[date]) {
+  //       setShow({
+  //         movie: matchedShow,
+  //         dateTime: dummyDateTimeData
+  //       })
+  //     } else {
+  //       setShow('not-found')
+  //     }
+  //     setLoading(false)
+  //   }, 500)
+
+  //   return () => clearTimeout(timer)
+  // }, [id, date])
+
+  // if (loading) return <Loading />
+
+  // if (show === 'not-found') {
+  //   return (
+  //     <div className='flex items-center justify-center h-screen text-2xl text-gray-500'>
+  //       Show Not Found
+  //     </div>
+  //   )
+  // }
+
+  return show ? (
     <div className='flex flex-col md:flex-row px-6 md:px-16 lg:px-40 py-30 md:pt-50 '>
       {/* Available timings */}
       <div className='w-60 bg-[#3B0000]/60 rounded-lg py-10 h-max md:sticky md:top-30 '>
@@ -114,14 +191,14 @@ const SeatLayout = () => {
             ))}
           </div>
         </div>
-        <button onClick={()=> {navigate('my-bookings'); scrollTo(0,0)}}  className='flex items-center gap-1 mt-20 px-10 py-3 text-sm font-bolder bg-primary 
+        <button onClick={bookTickets}  className='flex items-center gap-1 mt-20 px-10 py-3 text-sm font-bolder bg-primary 
         hover:bg-white hover:text-red-500 hover:font-bold transition text-white rounded-full font-medium cursor-pointer active:scale-95'>
           Proceed to checkout
           <ArrowRightIcon strokeWidth={3} className='w-4 h-4' />
           </button>
       </div>
     </div>
-  )
+  ) : (<Loading />)
 }
 
 export default SeatLayout
