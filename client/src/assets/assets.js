@@ -7,6 +7,7 @@ import googleplayic from './googlePlay.svg'
 import appstoreic from './appStore.svg' 
 import screen from './screenimg.png'
 import profile from './profile.png'
+import thefantasticfour from './The-Fantastic-Four-First-Steps-poster-1.webp'
 
 export const assets = {
     logo,
@@ -17,26 +18,27 @@ export const assets = {
     googleplayic,
     appstoreic,
     screen,
-    profile
+    profile,
+    thefantasticfour
 }
 
 
 export const dummyTrailers = [
     {
-        image: "https://img.youtube.com/vi/WpW36ldAqnM/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=WpW36ldAqnM'
+        image: "https://i.ytimg.com/vi/AzMo-FgRp64/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAXkMoqIzk3vFPSRMMFitRwmw-0og",
+        videoUrl: 'https://youtu.be/AzMo-FgRp64?si=oIOp-RSa4goVASOd'
     },
     {
-        image: "https://img.youtube.com/vi/-sAOWhvheK8/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=-sAOWhvheK8'
+        image: "https://i.ytimg.com/vi/MRQ_WxCDQf8/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLD_JHv3KuwqEt5odn1mwmnYSAzKGw",
+        videoUrl: 'https://youtu.be/MRQ_WxCDQf8?si=YSmuvOZCA_Skxr0Z'
     },
     {
-        image: "https://img.youtube.com/vi/1pHDWnXmK7Y/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=1pHDWnXmK7Y'
+        image: "https://i.ytimg.com/vi/nsXQijb0F4I/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCCne1pTRviHCMev6qYQ8nd7NB9Cg",
+        videoUrl: 'https://youtu.be/nsXQijb0F4I?si=yubRme82DNeo7nlL'
     },
     {
-        image: "https://img.youtube.com/vi/umiKiW4En9g/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=umiKiW4En9g'
+        image: "https://i.ytimg.com/vi/d9erkpdh5o0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBC8MrLrY7IUIDLVpNVcc0NVrx9YQ",
+        videoUrl: 'https://youtu.be/d9erkpdh5o0?si=1Na2FtNxQq9F2_-J'
     },
 ]
 

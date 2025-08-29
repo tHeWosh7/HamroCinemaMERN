@@ -42,25 +42,28 @@ const Navbar = () => {
             <XIcon className ='md:hidden absolute top-6 right-6 w-6 h-6 cursor-pointer ' onClick={() => setIsOpen(false)}/>
             <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Home</Link>
             <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/movies'>Movies</Link>
-            <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Theater</Link>
-            <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Releases</Link>
+            {/* <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Theater</Link> */}
+            <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/movies'>Releases</Link>
             {favouriteMovies.length>0 && <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/favourite'>Favourite</Link>}
         </div>
         <div className='flex items-center gap-8'>
             <SearchIcon className='hidden lg:block w-8 h-8 cursor-pointer hover:text-red-500 md:text-white'
             onClick={()=>setShowSearch(!showSearch)} />
             {showSearch && (
-                <form onSubmit={handleSearch} className="absolute top-20 right-10 bg-white rounded shadow-lg p-2 flex text-black">
-                    <input
-                        type="text"
-                        value={input}
-                        onChange={e => setInput(e.target.value)}
-                        placeholder="Search movies..."
-                        className="px-2 py-1 border rounded"
-                        autoFocus
-                    />
-                    <button type="submit" className="ml-2 px-3 py-1 bg-primary text-white rounded">Go</button>
-                </form>
+                <div className="absolute top-20 right-10 bg-white rounded shadow-lg p-2 flex text-black">
+        <input
+            type="text"
+            value={input}
+            onChange={e => {
+                setInput(e.target.value);
+                setSearchTerm(e.target.value); // Live search on every keystroke
+                navigate('/movies'); // Optional: navigate to movies page on typing
+            }}
+            placeholder="Search movies..."
+            className="px-2 py-1 border rounded"
+            autoFocus
+        />
+    </div>
             )}
             {
                 !user ? (
