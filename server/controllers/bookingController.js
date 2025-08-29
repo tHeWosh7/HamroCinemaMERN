@@ -39,8 +39,6 @@ const checkSeatsAvailability = async (showId, selectedSeats)=>{
             return false;
         }
         const occupiedSeats = showData.occupiedSeats;
-        console.log("selectedSeats:", selectedSeats);
-        console.log("occupiedSeats:", occupiedSeats);
         const isAnySeatTaken = selectedSeats.some(seat=>occupiedSeats[seat]);
         return !isAnySeatTaken;
     } catch (error){
@@ -55,6 +53,10 @@ export const createBooking = async (req,res)=>{
         const {showId, selectedSeats} = req.body;
         const {origin} = req.headers;
 
+        if (!userId) {
+            return res.status(401).json({success: false, message: "User not authenticated"});
+            
+        }
         //check if seats are available
         const isAvailable = await checkSeatsAvailability(showId, selectedSeats);
         if(!isAvailable){

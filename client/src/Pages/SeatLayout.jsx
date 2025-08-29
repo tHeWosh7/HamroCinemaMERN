@@ -46,9 +46,7 @@ const SeatLayout = () => {
     if(occupiedSeats.includes(seatId)){
       return toast("Seat is already occupied")
     }
-    setSelectedSeats(prev => 
-      prev.includes(seatId) 
-      ? prev.filter(seat => seat !== seatId) : [...prev, seatId])
+    setSelectedSeats(prev => prev.includes(seatId) ? prev.filter(seat => seat !== seatId) : [...prev, seatId])
   }
 
   const renderSeats = (row, count = 9) => (
@@ -70,38 +68,38 @@ const SeatLayout = () => {
     </div>
   )
 
-  // const getOccupiedSeats = async()=>{
-  //   try{
-  //     const {data} = await axios.get(`/api/booking/seats/${selectedTime.showId}`)
-  //     if (data.success){
-  //       setOccupiedSeats(data.occupiedSeats)
-  //     } else{
-  //       toast.error(data.message)
-  //     }
-  //   } catch (error){
-  //     console.log(error)
-  //   }
-  // }
   const getOccupiedSeats = async()=>{
-  if (!selectedTime || !selectedTime.showId) return; // Prevent API call if showId is missing
-  try{
-    const {data} = await axios.get(`/api/booking/seats/${selectedTime.showId}`)
-    if (data.success){
-      setOccupiedSeats(data.occupiedSeats)
-    } else{
-      toast.error(data.message)
+    try{
+      const {data} = await axios.get(`/api/booking/seats/${selectedTime.showId}`)
+      if (data.success){
+        setOccupiedSeats(data.occupiedSeats)
+      } else{
+        toast.error(data.message)
+      }
+    } catch (error){
+      console.log(error)
     }
-  } catch (error){
-    console.log(error)
   }
-}
+//   const getOccupiedSeats = async()=>{
+//   if (!selectedTime || !selectedTime.showId) return; // Prevent API call if showId is missing
+//   try{
+//     const {data} = await axios.get(`/api/booking/seats/${selectedTime.showId}`)
+//     if (data.success){
+//       setOccupiedSeats(data.occupiedSeats)
+//     } else{
+//       toast.error(data.message)
+//     }
+//   } catch (error){
+//     console.log(error)
+//   }
+// }
 
   const bookTickets = async()=>{
     try{
       if(!user) return toast.error('Please Login to proceed')
         if(!selectedTime || !selectedSeats.length) return toast.error('Please select time and seats');
-      const {data} = await axios.post('/api/booking/create',{showId: selectedTime.showId, selectedSeats}
-         ,{headers:{Authorization: `Bearer ${await getToken()}`}});
+      console.log("selectedtime.showid:"+selectedTime.showId)
+      const {data} = await axios.post('/api/booking/create',{showId: selectedTime.showId, selectedSeats},{headers:{Authorization: `Bearer ${await getToken()}`}});
     
       if(data.success){
         toast.success(data.message)
@@ -159,7 +157,8 @@ const SeatLayout = () => {
       <div className='w-60 bg-[#3B0000]/60 rounded-lg py-10 h-max md:sticky md:top-30 '>
         <p className='text-lg font-bold px-6'>Available Timings</p>
         <div className='mt-5 space-y-1'>
-          {show.dateTime[date]?.map(item => (
+          {show.dateTime[date]?.map(item => 
+             (
             <div
               key={item.time}
               onClick={() => setSelectedTime(item)}
