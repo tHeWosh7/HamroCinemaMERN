@@ -12,7 +12,18 @@ const Navbar = () => {
     const {openSignIn} = useClerk()
     const navigate = useNavigate()
 
+    const { setSearchTerm } = useAppContext();
+    const [showSearch, setShowSearch] = useState(false);
+    const [input, setInput] = useState('');
+
     const {favouriteMovies} = useAppContext();
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        setSearchTerm(input);
+        setShowSearch(false);
+        navigate('/movies');
+    };
 
     return (
       <div className='fixed  w-full lg:w-[190vh] top-0 left-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-36 py-2 -mx-5 md:-mx-20 md:-my-0 lg:backdrop-blur-[5px] lg:border-white/10 lg:border-[2px] gap-2 '>
@@ -31,12 +42,29 @@ const Navbar = () => {
             <XIcon className ='md:hidden absolute top-6 right-6 w-6 h-6 cursor-pointer ' onClick={() => setIsOpen(false)}/>
             <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Home</Link>
             <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/movies'>Movies</Link>
-            <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Theater</Link>
-            <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Releases</Link>
+            {/* <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/'>Theater</Link> */}
+            <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/movies'>Releases</Link>
             {favouriteMovies.length>0 && <Link onClick={()=>{scrollTo(0,0); setIsOpen(false)}} className='hover:text-red-500 hover:scale-105' to='/favourite'>Favourite</Link>}
         </div>
         <div className='flex items-center gap-8'>
-            <SearchIcon className='hidden lg:block w-8 h-8 cursor-pointer hover:text-red-500 md:text-white' />
+            <SearchIcon className='hidden lg:block w-8 h-8 cursor-pointer hover:text-red-500 md:text-white'
+            onClick={()=>setShowSearch(!showSearch)} />
+            {showSearch && (
+                <div className="absolute top-20 right-10 bg-white rounded shadow-lg p-2 flex text-black">
+        <input
+            type="text"
+            value={input}
+            onChange={e => {
+                setInput(e.target.value);
+                setSearchTerm(e.target.value); // Live search on every keystroke
+                navigate('/movies'); // Optional: navigate to movies page on typing
+            }}
+            placeholder="Search movies..."
+            className="px-2 py-1 border rounded"
+            autoFocus
+        />
+    </div>
+            )}
             {
                 !user ? (
                     <button onClick={openSignIn} className='px-4 py-1 sm:px-7 sm:py-2 bg-primary md:hover:bg-white 
