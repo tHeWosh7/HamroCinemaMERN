@@ -66,7 +66,7 @@ export const getFavourites = async (req, res)=>{
         if (!auth || !auth.userId) {
             return res.status(401).json({success: false, message: "Unauthorized"});
         }
-        const user = await clerkClient.users.getUser(auth.userId)
+        const user = await clerkClient.users.getUser(auth.userId);
         const favourites = user.privateMetadata.favourites || [];
         const movies = await Movie.find({_id: {$in: favourites}})
         res.json({success: true, movies})

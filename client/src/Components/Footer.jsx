@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="px-6 pt-8 md:px-16 lg:px-36 w-full text-gray-300">
             <div className="flex flex-col md:flex-row justify-between w-full gap-10 border-b border-gray-500 pb-10">
                 <div className="md:max-w-150">
-                    <img alt="logo" class="h-25 -mx-11" src={assets.MainLogo} />
+                    <img alt="logo" className="h-25 -mx-11" src={assets.MainLogo} />
                     <p className="mt-5 text-sm mb-5">
                         Hamro Cinema has been the industry's standard cinema watching since the 2025s, when the gap between the entertainment came across and make people's life work loaded, Harmro Cinema started granting entertainment services.
                     </p>
