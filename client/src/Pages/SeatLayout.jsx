@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { dummyDateTimeData, dummyShowsData, assets } from '../assets/assets'
-import Loading from '../components/Loading'
+import Loading from '../Components/Loading'
 import { ArrowRightIcon, ClockIcon } from 'lucide-react'
 import isotimeformat from '../lib/isotimeformat'
 import BackGradientBlue from '../components/BackGradientBlue'
@@ -102,8 +102,9 @@ const SeatLayout = () => {
       const {data} = await axios.post('/api/booking/create',{showId: selectedTime.showId, selectedSeats},{headers:{Authorization: `Bearer ${await getToken()}`}});
     
       if(data.success){
-        toast.success(data.message)
-        navigate('/my-bookings')
+        window.location.href = data.url;
+        // toast.success(data.message)
+        // navigate('/my-bookings')
       } else{
         toast.error(data.message)
       }
