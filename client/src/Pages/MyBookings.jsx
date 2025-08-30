@@ -43,7 +43,8 @@ const MyBookings = () => {
         <div key={index} className='flex flex-col md:flex-row justify-between 
         bg-[#3B0000] border border-[#3B0000]/20 rounded-lg mt-4 p-2 max-w-3xl'>
           <div className='flex flex-col md:flex-row'>
-            <img src = {image_base_url + item.show.movie.poster_path} alt="" className='md:max-w-45 aspect-video h-auto object-cover object-bottom rounded'/>
+            <img src = {image_base_url + item.show.movie.poster_path} alt="" className='md:max-w-45 aspect-video 
+            h-auto object-cover object-bottom rounded'/>
             <div className='flex flex-col p-4'>
               <p className='text-lg font-semibold'>{item.show.movie.title}</p>
               <p className='text-gray-400 text-sm'>{timeFormat(item.show.movie.runtime)}</p>
@@ -54,7 +55,8 @@ const MyBookings = () => {
             <div className='flex items-center gap-4'>
               <p className='text-2xl font-semibold mb-3'>{currency}{item.amount}</p>
               {!item.isPaid && 
-                <button className='bg-white border-1 text-[#3B0000] px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer hover:bg-red-500 hover:text-white hover:border-white hover:border-1'>
+                <button className='bg-white border-1 text-[#3B0000] px-4 py-1.5 mb-3 text-sm rounded-full font-medium 
+                cursor-pointer hover:bg-red-500 hover:text-white hover:border-white hover:border-1'>
                   Pay Now
                 </button>}
             </div>
