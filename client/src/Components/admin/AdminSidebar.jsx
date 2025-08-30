@@ -15,7 +15,7 @@ const AdminSidebar = () => {
     { name: 'Dashboard', to: '/admin', icon: LayoutDashboardIcon },
     { name: 'Add Shows', to: '/admin/add-shows', icon: PlusSquareIcon },
     { name: 'List Shows', to: '/admin/list-shows', icon: ListIcon },
-    { name: 'List Bookings', to: '/admin/list-bookings', icon: ListCollapseIcon },
+    // { name: 'List Bookings', to: '/admin/list-bookings', icon: ListCollapseIcon },
   ]
 
   return (
