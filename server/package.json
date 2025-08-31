@@ -20,8 +20,12 @@
     "express": "^5.1.0",
     "inngest": "^3.40.1",
     "mongoose": "^8.18.0",
+<<<<<<< HEAD
+    "python-shell": "^5.0.0"
+=======
     "stripe": "^18.5.0",
     "svix": "^1.75.0"
+>>>>>>> 03d9fd5af732c86a8efa2b51c872f3d17d0961b9
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
