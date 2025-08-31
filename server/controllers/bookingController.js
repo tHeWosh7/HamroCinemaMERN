@@ -91,12 +91,11 @@ export const createBooking = async (req,res)=>{
         await showData.save();
 
         //Stripe Gateway Initialize(Later Esewa)
-
         const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
 
         const line_items = [{
             price_data: {
-                currency: 'usd',
+                currency: 'inr',
                 product_data:{
                     name: showData.movie.title
                 },
@@ -119,8 +118,6 @@ export const createBooking = async (req,res)=>{
 
         booking.paymentLink = session.url
         await booking.save()
-
-
         res.json({success:true, url: session.url})
 
     } catch (error){

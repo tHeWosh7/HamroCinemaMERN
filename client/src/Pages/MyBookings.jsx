@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { dummyBookingData } from '../assets/assets'
-import Loading from '../components/Loading'
+import Loading from '../Components/Loading'
 import BackGradientRed from '../components/BackGradientRed'
 import BackGradientBlue from '../components/BackGradientBlue'
 import timeFormat from '../lib/timeformat'
 import isotimeformat from '../lib/isotimeformat'
 import { DateFormat } from '../lib/dateformat'
 import { useAppContext } from '../context/AppContext'
+import { Link } from 'react-router-dom'
 
 const MyBookings = () => {
   const currency = import.meta.env.VITE_CURRENCY
@@ -55,10 +56,11 @@ const MyBookings = () => {
             <div className='flex items-center gap-4'>
               <p className='text-2xl font-semibold mb-3'>{currency}{item.amount}</p>
               {!item.isPaid && 
-                <button className='bg-white border-1 text-[#3B0000] px-4 py-1.5 mb-3 text-sm rounded-full font-medium 
-                cursor-pointer hover:bg-red-500 hover:text-white hover:border-white hover:border-1'>
+
+                <Link to={item.paymentLink} className='bg-white border-1 text-[#3B0000] px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer hover:bg-red-500 hover:text-white hover:border-white hover:border-1'>
+
                   Pay Now
-                </button>}
+                </Link>}
             </div>
             <div className='text-sm'>
                 <p>
