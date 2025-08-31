@@ -80,20 +80,6 @@ const SeatLayout = () => {
       console.log(error)
     }
   }
-//   const getOccupiedSeats = async()=>{
-//   if (!selectedTime || !selectedTime.showId) return; // Prevent API call if showId is missing
-//   try{
-//     const {data} = await axios.get(`/api/booking/seats/${selectedTime.showId}`)
-//     if (data.success){
-//       setOccupiedSeats(data.occupiedSeats)
-//     } else{
-//       toast.error(data.message)
-//     }
-//   } catch (error){
-//     console.log(error)
-//   }
-// }
-
   const bookTickets = async()=>{
     try{
       if(!user) return toast.error('Please Login to proceed')
@@ -121,34 +107,6 @@ const SeatLayout = () => {
       getOccupiedSeats()
     }
   },[selectedTime])
-
-  // useEffect(() => {
-  //   setLoading(true)
-  //   const timer = setTimeout(() => {
-  //     const matchedShow = dummyShowsData.find(show => show._id === id)
-  //     if (matchedShow && dummyDateTimeData[date]) {
-  //       setShow({
-  //         movie: matchedShow,
-  //         dateTime: dummyDateTimeData
-  //       })
-  //     } else {
-  //       setShow('not-found')
-  //     }
-  //     setLoading(false)
-  //   }, 500)
-
-  //   return () => clearTimeout(timer)
-  // }, [id, date])
-
-  // if (loading) return <Loading />
-
-  // if (show === 'not-found') {
-  //   return (
-  //     <div className='flex items-center justify-center h-screen text-2xl text-gray-500'>
-  //       Show Not Found
-  //     </div>
-  //   )
-  // }
 
   return show ? (
     <div className='flex flex-col md:flex-row px-6 md:px-16 lg:px-40 py-30 md:pt-50 '>

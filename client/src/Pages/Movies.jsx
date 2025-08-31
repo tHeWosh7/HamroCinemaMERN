@@ -1,4 +1,4 @@
-// import { dummyShowsData } from "../assets/assets"
+
 import BackGradientBlue from "../components/BackGradientBlue"
 import BackGradientRed from "../components/BackGradientRed"
 import MovieCard from "../components/MovieCard"
