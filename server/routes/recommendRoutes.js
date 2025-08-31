@@ -1,11 +1,12 @@
-// server/routes/recommendRoutes.js
 import express from "express";
 import { getRecommendations } from "../controllers/recommendController.js";
-import { requireAuth } from "@clerk/express";
+import { protectAdmin } from "../middleware/auth.js"; 
 
 const router = express.Router();
 
-// User must be authenticated
-router.get("/", requireAuth(), getRecommendations);
+
+router.get("/", getRecommendations);
+
+
 
 export default router;
