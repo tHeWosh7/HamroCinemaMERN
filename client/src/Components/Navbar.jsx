@@ -4,20 +4,24 @@ import { MenuIcon, SearchIcon, TicketPlus, XIcon, Bell } from 'lucide-react'
 import React, { useState, useEffect } from 'react'
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react'
 import { useAppContext } from '../context/AppContext'
+import axios from 'axios'
+import useRecommendations from './useRecommendations'
 
 const Navbar = () => {
+    const { setSearchTerm, favouriteMovies } = useAppContext();
     const [isOpen, setIsOpen] = useState(false)
     const { user } = useUser()
     const { openSignIn } = useClerk()
     const navigate = useNavigate()
 
-    const { setSearchTerm, favouriteMovies } = useAppContext();
     const [showSearch, setShowSearch] = useState(false);
     const [input, setInput] = useState('');
 
     // 🔔 Recommendation state
     const [showRecs, setShowRecs] = useState(false);
-    const [recs, setRecs] = useState([]);
+    // const [recs, setRecs] = useState([]);
+    const recs = useRecommendations();
+
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -27,16 +31,18 @@ const Navbar = () => {
     };
 
     // 🔔 Fetch recommendations when dropdown is opened
-    useEffect(() => {
-        if (showRecs) {
-            fetch("/api/recommend")
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) setRecs(data.recommendations);
-                })
-                .catch(err => console.error("Failed to fetch recommendations", err));
-        }
-    }, [showRecs]);
+    
+  useEffect(() => {
+    axios.get("/api/recommend")
+      .then(res => setRecs(res.data.recommendations))
+      .catch(err => console.error(err));
+  }, []);
+// useEffect(() => {
+//   if (showRecs) {
+//     const newRecs = useRecommendations();
+//     setRecs(newRecs);
+//   }
+// }, [showRecs]);
 
     return (
       <div className='fixed w-full lg:w-[190vh] top-0 left-0 z-50 flex items-center justify-between px-6 md:px-16 lg:px-36 py-2 -mx-5 md:-mx-20 md:-my-0 lg:backdrop-blur-[5px] lg:border-white/10 lg:border-[2px] gap-2 '>
@@ -91,25 +97,50 @@ const Navbar = () => {
                       className="w-6 h-6 cursor-pointer hover:text-red-500 text-white"
                       onClick={() => setShowRecs(!showRecs)}
                     />
-                    {showRecs && (
+                    {/* {showRecs && (
                         <div className="absolute top-12 right-0 bg-white text-black w-64 rounded-lg shadow-lg p-4">
                             <h3 className="font-semibold mb-2">Recommended Movies</h3>
                             {recs.length > 0 ? (
                                 <ul className="space-y-1">
                                     {recs.map((movie, idx) => (
-                                        <li key={idx} className="text-sm hover:text-red-500 cursor-pointer"
-                                            onClick={() => navigate('/movies')}>
-                                            🎬 {movie}
-                                        </li>
+                                        <li key={idx}>🎬 {movie}</li>
                                     ))}
                                 </ul>
                             ) : (
                                 <p className="text-sm">No recommendations</p>
                             )}
                         </div>
-                    )}
+                    )} */}
+                    {showRecs && (
+  <div className="absolute top-12 right-0 bg-white text-black w-64 rounded-lg shadow-lg p-4">
+    <h3 className="font-semibold mb-2">Recommended Movies</h3>
+    {Array.isArray(recs) && recs.length > 0 ? (
+      <ul className="space-y-1">
+        {recs.map((movie, idx) => (
+          <li key={idx} className="text-sm hover:text-red-500 cursor-pointer">
+            🎬 {movie}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p className="text-sm">No recommendations</p>
+    )}
+  </div>
+)}
                 </div>
             )}
+            {/* <div> */}
+      {/* <h3>Recommended Movies</h3>
+      {recs.length > 0 ? (
+        <ul>
+          {recs.map((movie, idx) => (
+            <li key={idx}>🎬 {movie}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No recommendations</p>
+      )}
+    </div> */}
 
             {/* Auth buttons */}
             {!user ? (

@@ -105,9 +105,9 @@ const MovieDetails = () => {
               Buy Tickets
             </a>
              {/* onClick={handleFavourite}  */}
-            <button className='bg-gray-800/70 p-2.5 rounded-full transition cursor-pointer active:scale-95'>
+            {/* <button className='bg-gray-800/70 p-2.5 rounded-full transition cursor-pointer active:scale-95'>
               <Heart className={`w-5 h-5 ${favouriteMovies.find(movie=>movie._id===id) ? 'fill-primary text-primary':""}`} />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
