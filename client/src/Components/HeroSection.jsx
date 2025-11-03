@@ -24,7 +24,7 @@ const HeroSection = () => {
             </div>
         </div>
         <p className='max-w-md text-black/100'>Against the vibrant backdrop of a 1960s-inspired, retro-futuristic world, Marvel's First Family is forced to balance their roles as heroes with the strength of their family bond, 
-            while defending Earth from a ravenous space god called Galactus and his enigmatic Herald, Silver Surfer.</p>
+            while defending Earth from a dangerous space god called Galactus and his enigmatic Herald, Silver Surfer.</p>
         <button onClick={()=> {navigate('/movies'); scrollTo(0,0)}} className='flex items-center gap-1 px-6 py-3 bg-primary 
         hover:bg-white hover:text-red-500 hover:font-bold transition text-white rounded-full font-medium cursor-pointer'>
             Explore More

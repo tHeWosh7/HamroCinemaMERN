@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { dummyDateTimeData, dummyShowsData, assets } from '../assets/assets'
-import Loading from '../Components/Loading'
+import Loading from '../components/Loading'
 import { ArrowRightIcon, ClockIcon } from 'lucide-react'
 import isotimeformat from '../lib/isotimeformat'
 import BackGradientBlue from '../components/BackGradientBlue'

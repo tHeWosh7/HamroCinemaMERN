@@ -16,7 +16,7 @@ import ListShows from './Pages/admin/ListShows'
 import ListBookings from './Pages/admin/ListBookings'
 import { useAppContext } from './context/AppContext'
 import { SignIn } from '@clerk/clerk-react'
-import Loading from './Components/Loading'
+import Loading from './components/Loading'
 
 
 const App = () => {
@@ -49,3 +49,4 @@ const App = () => {
   )
 }
 export default App
+// fixed errors

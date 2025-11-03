@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { dummyBookingData } from '../assets/assets'
-import Loading from '../Components/Loading'
+import Loading from '../components/Loading'
 import BackGradientRed from '../components/BackGradientRed'
 import BackGradientBlue from '../components/BackGradientBlue'
 import timeFormat from '../lib/timeformat'
