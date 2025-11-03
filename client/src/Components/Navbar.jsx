@@ -90,13 +90,13 @@ const Navbar = () => {
                 </div>
             )}
 
-            {/* 🔔 Bell Icon */}
+            {/* 🔔 Bell Icon
             {user && (
                 <div className="relative">
                     <Bell
                       className="w-6 h-6 cursor-pointer hover:text-red-500 text-white"
                       onClick={() => setShowRecs(!showRecs)}
-                    />
+                    /> */}
                     {/* {showRecs && (
                         <div className="absolute top-12 right-0 bg-white text-black w-64 rounded-lg shadow-lg p-4">
                             <h3 className="font-semibold mb-2">Recommended Movies</h3>
@@ -111,7 +111,7 @@ const Navbar = () => {
                             )}
                         </div>
                     )} */}
-                    {showRecs && (
+                    {/* {showRecs && (
   <div className="absolute top-12 right-0 bg-white text-black w-64 rounded-lg shadow-lg p-4">
     <h3 className="font-semibold mb-2">Recommended Movies</h3>
     {Array.isArray(recs) && recs.length > 0 ? (
@@ -128,7 +128,7 @@ const Navbar = () => {
   </div>
 )}
                 </div>
-            )}
+            )} */}
             {/* <div> */}
       {/* <h3>Recommended Movies</h3>
       {recs.length > 0 ? (
