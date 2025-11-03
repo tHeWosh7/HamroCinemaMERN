@@ -1,9 +1,9 @@
 import React from 'react'
-import AdminNavbar from '../../components/admin/AdminNavbar'
-import AdminSidebar from '../../components/admin/AdminSidebar'
+import AdminNavbar from '../../Components/admin/AdminNavbar'
+import AdminSidebar from '../../Components/admin/AdminSidebar'
 import { Outlet } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
-import Loading from '../../components/Loading'
+import Loading from '../../Components/Loading'
 
 const Layout = () => {
 
