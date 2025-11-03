@@ -2,7 +2,7 @@ import { ChartLineIcon, CircleDollarSignIcon, PlayCircleIcon, StarIcon, UsersIco
 import React, { useEffect, useState } from 'react';
 import { dummyDashboardData } from '../../assets/assets';
 import Loading from '../../components/Loading';
-import Title from '../../Components/admin/Title';
+import Title from '../../components/admin/Title';
 import BackGradientRed from '../../components/BackGradientRed';
 import { DateFormat } from '../../lib/dateformat';
 import { useAppContext } from '../../context/AppContext';
