@@ -119,18 +119,3 @@ Client-side assets include an `esewa.js` helper. Server has `stripeWebhooks.js` 
 **Troubleshooting**
 - Mongo connection errors: confirm `MONGO_URI` and that Mongo is accessible.
 - Frontend build issues: delete `node_modules` and reinstall if dependency mismatch occurs.
-
-**Files Changed / Created**
-- Added: [README.md](README.md)
-
-**License & Contact**
-Include your preferred license and contact details here.
-
----
-
-If you want, I can:
-- Add an example `.env.example` for server and client
-- Expand the API section with sample requests and responses
-- Add a small CONTRIBUTING.md and LICENSE
-
-Tell me which next item you'd like me to do.
