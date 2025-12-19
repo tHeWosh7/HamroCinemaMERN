@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { dummyBookingData } from '../assets/assets'
 import Loading from '../Components/Loading'
-import BackGradientRed from '../Components/BackGradientRed'
-import BackGradientBlue from '../Components/BackGradientBlue'
+import BackGradientRed from '../components/BackGradientRed'
+import BackGradientBlue from '../components/BackGradientBlue'
 import timeFormat from '../lib/timeformat'
 import isotimeformat from '../lib/isotimeformat'
 import { DateFormat } from '../lib/dateformat'
@@ -56,9 +56,8 @@ const MyBookings = () => {
             <div className='flex items-center gap-4'>
               <p className='text-2xl font-semibold mb-3'>{currency}{item.amount}</p>
               {!item.isPaid && 
-
+                
                 <Link to={item.paymentLink} className='bg-white border-1 text-[#3B0000] px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer hover:bg-red-500 hover:text-white hover:border-white hover:border-1'>
-
                   Pay Now
                 </Link>}
             </div>

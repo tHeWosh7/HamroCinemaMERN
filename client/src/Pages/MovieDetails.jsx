@@ -5,8 +5,8 @@ import BackGradientBlue from '../Components/BackGradientBlue'
 import BackGradientRed from '../Components/BackGradientRed'
 import { Heart, PlayIcon, StarIcon } from 'lucide-react'
 import timeFormat from '../lib/timeformat'
-import DateSelect from '../Components/DateSelect'
-import MovieCard from '../Components/MovieCard'
+import DateSelect from '../components/DateSelect'
+import MovieCard from '../components/MovieCard'
 import Loading from '../Components/Loading'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
@@ -47,30 +47,7 @@ const MovieDetails = () => {
     getShow();
   },[id])
 
-  // useEffect(() => {
-  //   setLoading(true)
-  //   const timer = setTimeout(() => {
-  //     const matchedShow = show.find(show => show._id === id)
-  //     if (matchedShow) {
-  //       setShow({ movie: matchedShow, dateTime: show.dateTime })
-  //     } else {
-  //       setShow('not-found')
-  //     }
-  //      setLoading(false)
-  //     setTimeout(() => setFadeIn(true), 50) // small delay to trigger transition
-  //   }, 500)
-
-  //   return () => clearTimeout(timer)
-  // }, [id])
-
-  // if (loading) return <Loading />
-  // if (show === 'not-found') {
-  //   return (
-  //     <div className='flex items-center justify-center h-screen text-2xl text-red-500'>
-  //       Movie Not Found
-  //     </div>
-  //   )
-  // }
+  
 
   return show?(
     <div className='px-6 md:px-16 lg:px-40 pt-30 md:pt-50 overflow-hidden'>
