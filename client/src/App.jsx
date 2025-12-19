@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import Navbar from './components/Navbar'
+import Navbar from './Components/Navbar'
 import Home from './Pages/Home'
 import Movies from './Pages/Movies'
 import MovieDetails from './Pages/MovieDetails'
@@ -8,7 +9,7 @@ import SeatLayout from './Pages/SeatLayout'
 import MyBookings from './Pages/MyBookings'
 import Favourite from './Pages/Favourite'
 import { Toaster } from 'react-hot-toast'
-import Footer from './components/Footer'
+import Footer from './Components/Footer'
 import Layout from './Pages/admin/Layout'
 import Dashboard from './Pages/admin/Dashboard'
 import AddShows from './Pages/admin/AddShows'
@@ -49,3 +50,4 @@ const App = () => {
   )
 }
 export default App
+// fixed errors

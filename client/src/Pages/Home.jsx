@@ -1,8 +1,8 @@
 import React from 'react'
-import HeroSection from '../components/HeroSection'
-import FeaturedSection from '../components/FeaturedSection'
-import TrailersSection from '../components/TrailersSection'
-import Footer from '../components/Footer'
+import HeroSection from '../Components/HeroSection'
+import FeaturedSection from '../Components/FeaturedSection'
+import TrailersSection from '../Components/TrailersSection'
+import Footer from '../Components/Footer'
 
 const Home = () => {
   return (

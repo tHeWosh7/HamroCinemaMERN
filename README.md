@@ -119,3 +119,4 @@ Client-side assets include an `esewa.js` helper. Server has `stripeWebhooks.js` 
 **Troubleshooting**
 - Mongo connection errors: confirm `MONGO_URI` and that Mongo is accessible.
 - Frontend build issues: delete `node_modules` and reinstall if dependency mismatch occurs.
+
